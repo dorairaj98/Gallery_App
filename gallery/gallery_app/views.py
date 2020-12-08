@@ -29,8 +29,8 @@ class gallerylist(ListView):
     context_object_name = "imglist"
 
     def get_queryset(self):
-        filter_val = self.request.GET.get('filter', 'give-default-value')
-        if filter_val != "give-default-value":
+        filter_val = self.request.GET.get('filter', 'reset-filter')
+        if filter_val != "reset-filter":
             new_context = gallery_details.objects.filter(gallery_category=filter_val,).order_by('-id')
         else:
             new_context = gallery_details.objects.all().order_by('-id')
